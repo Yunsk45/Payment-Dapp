@@ -7,11 +7,12 @@ contract PaymentToken is ERC20 {
 
    constructor() ERC20("Payment Token", "PAY") {
       owner = msg.sender;
-      _mint(msg.sender, 100_000 * 10**18;
+      _mint(msg.sender, 100_000 * 10**18);
    }
    
    modifier onlyOwner() {
       require(msg.sender == owner, "Only owner can mint.");
+      _;
    }
    function mint(address to, uint256 amount) external onlyOwner {
       _mint(to, amount);
